@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/bootstrap")
+
+</head>
+<body>
+    <div class="container">
+        @*@if (Session["UserName"] != null)
+            {
+                @Html.ActionLink("Welcome to My Twitter Clone", "Tweet", "Twitter", new { area = "" }, new { @class = "navbar-brand" })
+            }
+            else
+            {
+                @Html.ActionLink("Welcome to My Twitter Clone", "Login", "User", new { area = "" }, new { @class = "navbar-brand" })
+            }*@
+
+        <ul class="nav navbar-nav navbar-right" style="display: inline; margin-left:55%;">
+            @if (Session["UserName"] != null)
+            {
+
+                <li style="display: inline">@Html.ActionLink("Sign Out", "LogOff", "User")</li>
+            }
+            else
+            {
+                <li style="display: inline">@Html.ActionLink("Sign Up", "Register", "User")</li>
+            }
+        </ul>
+    </div>
+
+    <div class="container">
+        @RenderBody()
+
+    </div>
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
